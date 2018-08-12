@@ -2,7 +2,7 @@ import React from 'react';
 
 
 const Forms = (props) => (
-    <div>List</div>
+    <div>Forms</div>
 )
 
 export default Forms
