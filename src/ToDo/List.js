@@ -3,7 +3,16 @@ import Task from './Task'
 
 
 const List = (props) => (
-    <div><Task/></div>
+    <div>
+        {props.tasksProp.map(task => (
+        <Task
+            nameProp={task.name}
+            deleteTaskProp = {()=>props.deleteTaskProp(task.uid)}
+        />
+        ))}
+        <Task/>
+        
+    </div>
 )
 
 export default List
