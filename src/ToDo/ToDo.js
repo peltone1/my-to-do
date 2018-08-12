@@ -11,6 +11,13 @@ class ToDo extends React.Component {
 
     ]
   }
+
+  deleteTask = (taskUid) => {
+    const newTasks = this.state.tasks.filter(task => taskUid !== task.uid)
+    this.setState ({
+      tasks: newTasks
+    })
+  }
     render() {
       return (
         <div>
@@ -20,7 +27,7 @@ class ToDo extends React.Component {
           <Container>
             <List
               tasksProp = {this.state.tasks}
-              deleteTaskProp = {(uid)=> alert(uid)}
+              deleteTaskProp = {this.deleteTask}
             />
           </Container>
        
