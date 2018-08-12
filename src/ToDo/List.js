@@ -8,6 +8,7 @@ const List = (props) => (
         <Task
             nameProp={task.name}
             deleteTaskProp = {()=>props.deleteTaskProp(task.uid)}
+            taskCompletedProp={()=>props.taskCompleted(task.uid)}
         />
         ))}
         <Task/>
