@@ -7,8 +7,10 @@ const List = (props) => (
         {props.tasksProp.map(task => (
         <Task
             nameProp={task.name}
-            deleteTaskProp = {()=>props.deleteTaskProp(task.uid)}
-            taskCompletedProp={()=>props.taskCompleted(task.uid)}
+            deleteTaskProp = {()=>props.deleteTaskProp(task.key)}
+            toggleTask={props.toggleTask}
+            task={task}
+            key={task.key}
         />
         ))}
         <Task/>
