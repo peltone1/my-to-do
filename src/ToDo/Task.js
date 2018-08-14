@@ -4,8 +4,8 @@ import Delete from 'material-ui/svg-icons/action/delete'
 import Checkbox from 'material-ui/Checkbox'
 import { ListItem } from 'material-ui/List'
 
-const Task = (props) => (
-    <div>
+const Task = props => {
+    return ( 
         <ListItem
             primaryText= {props.nameProp}
             rightIcon={<Delete onClick={props.deleteTaskProp}/>}
@@ -18,7 +18,7 @@ const Task = (props) => (
             }
         />
         
-    </div>
-)
+    ) 
+}
 
 export default Task

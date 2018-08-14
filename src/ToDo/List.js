@@ -13,8 +13,6 @@ const List = (props) => (
             key={task.key}
         />
         ))}
-        <Task/>
-        
     </div>
 )
 

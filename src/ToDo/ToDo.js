@@ -8,19 +8,33 @@ class ToDo extends React.Component {
     super(props);
     this.state = {
         tasks: [
-          { name: "wynies smieci", key: 343424, isCompleted: true },
+          { name: "wynies smieci", key: "343424", isCompleted: true },
+          
         ],
         newTaskName: "",
         
     };
   }
-  componentDidMount() {
-    const lastTasks = JSON.parse(localStorage.getItem('my-to-do-app-tasks')) || this.state.tasks
-    this.setState({
-      tasks: lastTasks
-    })
+  componentWillUpdate(nextProps, nextState) {
+    localStorage.setItem("my-to-do-app", JSON.stringify(nextState.tasks));
   }
 
+  componentWillMount() {
+    localStorage.getItem("my-to-do-app") &&
+      this.setState({
+        tasks: JSON.parse(localStorage.getItem("my-to-do-app"))
+      });
+  }
+
+  componentDidMount() {
+    const lastState = JSON.parse(localStorage.getItem("my-to-do-app"));
+
+    if (lastState === null) return;
+
+    this.setState(this.lastState);
+  }
+
+  
   onNewTaskChange = (event, newValue) => {
     this.setState({
       newTaskName: newValue
@@ -40,11 +54,12 @@ class ToDo extends React.Component {
         }
       })
     });
+   
   };
 
   addTask = () => {
     const newTaskName = this.state.newTaskName;
-    if (newTaskName === "") return;
+    if (newTaskName === "") return
     const newTask = {
       name: this.state.newTaskName,
       isCompleted: false,
@@ -62,8 +77,7 @@ class ToDo extends React.Component {
     this.setState({
       tasks: newTasks
     })
-    localStorage.setItem('my-to-do-app-tasks', JSON.stringify(newTasks))
-
+    
   }
   
   
